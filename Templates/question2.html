@@ -1,0 +1,101 @@
+<html>
+<script>
+parent.hide();
+</script>
+	{% load staticfiles %}
+	<body oncontextmenu="return false">
+	<div id ="question" ondrag="return false" oncopy="return false" oncut="return false" onpaste="return false" onselect="return false">
+				{% if image %}
+					<div id='image'>
+					</div>
+					{{no}}. {{q|safe}}
+				{% else %}
+					{{no}}. {{Ques|safe}}
+				{% endif %}
+				<div id ='option'>
+					<form method="POST" id='sub' action="/next/" onsubmit="parent.changecolor({{no}},ans.value)" >
+						{% csrf_token %}
+						<input type='hidden' name='no' value={{no}} />
+						<input type="radio" name="ans" value="1"{{val1}}/> {{opt1|safe}}</br>
+						<input type="radio" name="ans" value="2"{{val2}}/> {{opt2|safe}}</br>
+						<input type="radio" name="ans" value="3"{{val3}}/> {{opt3|safe}}</br>
+						<input type="radio" name="ans" value="4" {{val4}}/> {{opt4|safe}}</br>
+						<div id='butt'>
+							{% if Prev %}<a class="prev" href="/questions/{{Prev}}/" onclick="parent.pause();">Prev</a>{% endif %}
+							<input Type="Submit" value='Next'onclick="parent.pause();"/>
+						</div>
+					</form>
+				</div>			
+	</div>
+	</body>
+	<style type="text/css">
+	
+		#question
+		{
+			padding-left: 100px;
+			margin-top: 80px;
+			font-size:30px;
+			color: black;
+			cursor: default;
+		}
+		.prev
+		{
+			background-color: #0FF513;
+			font-size: 23px;
+			border-color: #00FF04;
+			border-width: 1px;
+			border: medium;
+			margin-top: 12px;
+			text-decoration: none;
+			padding-top: 5px;
+			padding-bottom: 8px;
+			padding-left: 10px;
+			padding-right: 10px;
+			color:black;
+			font-weight:500;
+			height: 100%;
+		}
+		.prev:HOVER
+		{
+			color: white;
+		}
+		#image
+		{
+			background-image:url("{% static urli %}");
+			width: 500px;
+			height: 200px;
+			background-size: 17ex;
+			background-repeat: no-repeat;
+		}
+		input[type="submit"]
+		{
+			width:60px;
+			height:100%;
+			background-color: #0FF513;
+			font-size: 20px;
+			border-color: #00FF04;
+			border-width: 1px;
+			border: medium;
+			margin-top: 10px;
+			margin-left: 30px;
+		}
+		input[type="submit"]:HOVER 
+		{
+			color: white;
+		}
+		#butt
+		{
+			height: 39px;
+			margin-top:10px;
+		}
+		#option
+		{
+			margin-top: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+		//alert('sasa');
+		window.addEventListener('load',parent.start());
+		parent.fade();
+	</script>
+</html>

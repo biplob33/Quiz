@@ -1,0 +1,152 @@
+<html>
+    <title>{{Title}}</title>
+    {% load staticfiles %}
+    <div id = 'body'>
+		<body >
+			<div id = 'title'>
+				<h1>
+				{{Title}}
+				</h1>
+			</div>
+				<div id ="form">
+					<form method='POST' action='' enctype="multipart/form-data">
+						{% csrf_token %}
+       					{{form.as_p}}
+       					<input Type="Submit" value='{{Submit}}'/>
+					</form>
+						
+				</div>
+	</body>
+	</div>
+	<style type="text/css">
+	#form
+	{
+		background-origin:padding-box;
+		border-style:solid;
+		display:block;
+		margin-top:5%;
+		margin-left: 31%;
+		font-family: monospace;
+		width: 400px;
+		height: 250px;
+		padding-left: 50px;
+		padding-right: 50px;
+		background: -webkit-linear-gradient(#79db33,#d4c468);	
+		border-radius: 20px;
+		border-color: black;
+	}
+	#form:HOVER
+	{
+		border-color: gray;
+	}
+	#form #Name
+	{
+		font-size: 20px;
+		margin-bottom: 20px;
+		margin-top: 25px; 
+	}
+	#form #Roll_No
+	{
+		font-size: 20px;
+		margin-bottom: 20px;
+	}
+	#form #Zip_File
+	{
+		font-size: 20px;
+		margin-bottom: 20px;
+	}
+	input[type="text"]
+	{
+		appearance: none;
+		font-family:"Rockwell";
+		font-size:20px;
+		border: .1mm solid #2e2e2e;
+		height:35px;
+		width:255px;
+		border-radius: 7px;
+		cursor:text;
+		box-shadow: 0 0 5px 1px #969696;
+	}
+	input[type="text"]:HOVER
+	{
+		border: .1mm solid #ff7547;
+	}
+	#id_Name
+	{
+		margin-left: 55px;
+	}
+	#id_Roll_no
+	{
+		margin-left: 21px;
+	}
+	input[type="Submit"]
+	{
+		background-origin:border-box;
+		border-style:solid;
+		display:block;
+		margin-left: 155px;
+		border-width:3px;
+		background-color: rgba(0, 57, 245, 0.63);
+		padding-top: 15px;
+		text-align: center;
+		padding-bottom: 15px;
+		width: 110px;
+		border-radius: 15px;
+		font-size: 20px;
+		color:#0;
+		cursor: pointer;
+	}
+	input[type="Submit"]:hover
+	{
+		border-color: #ff7547;
+	}
+	input[type="File"]
+	{
+		margin-left:10px;
+	}
+	#id_Zip_File::-webkit-file-upload-button 
+	{
+  		visibility: hidden;
+  		width: 30px;
+  	}
+  	#id_Zip_File::before {
+  		  content: 'Zip File of Your Answer';
+  		  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+		  display:inline-block;
+		  border: 1px solid #999;
+		  border-radius: 3px;
+		  padding: 5px 8px;
+		  white-space: nowrap;
+		  cursor: pointer;
+		  text-shadow: 1px 1px #fff;
+		  font-weight: 600;
+		  font-size: 10pt;
+	}
+	#id_Zip_File:hover::before 
+	{
+  		border-color: black;
+	}
+	#id_Zip_File:active::before 
+	{
+  		background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+	}
+	#id_Zip_File::after
+	{
+		content: normal;
+	}
+	#title
+	{
+		font-family: cursive;
+		font-size: 30px;
+		font-style: italic;
+		margin-left: 27%;
+		color: #F1948A;
+	}
+	#body
+	{
+		background: -webkit-linear-gradient(#58D68D  ,#F7DC6F);	
+		height: 100%;
+		padding: 0px 0px 0px 0px;
+	}	
+	</style>
+</html>

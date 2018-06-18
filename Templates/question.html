@@ -1,0 +1,220 @@
+<html>
+{% extends 'base.html' %}
+	{% block script %}
+		<script type="text/javascript">
+			function countDown(time,elem)
+			{
+				var mins=0;
+				var hour=0;
+				if(time>=60){
+					mins=Math.floor( time/60);
+					secs=time%60;
+			}
+			
+			else{
+				secs=time;
+			}
+			if(mins>60){
+				hour=Math.floor(mins/60);
+				mins=mins%60;
+			}
+			var element = document.getElementById(elem);
+			element.innerHTML=hour+":"+n(mins)+":"+n(secs);
+			if(secs < 1&&mins<1&&hour<1) {
+				clearTimeout(timer);
+				 window.location="/submit/";
+			}
+			time--;
+			var timer = setTimeout('countDown('+time+',"'+elem+'")',1000);
+		}
+		function n(n){
+    	return n > 9 ? "" + n: "0" + n;
+    	}
+		</script>
+		<div id ='status'>
+		</div>
+	<script type="text/javascript">
+		countDown({{time}},'status');
+	</script>
+	{% endblock %}
+	{% block title %}
+		Question page
+	{% endblock %}
+	{% load staticfiles %}
+	{% block content %}
+	<div id='user'>
+		Hello {{ user}},
+	</div>
+		<div id='barr' >
+			{% for i in l %}
+			<a href="/question/{{i}}/" >Question {{i}}</a>
+			{% endfor %}
+			
+		</div>
+		<a class="submit" href="/submit/">Done</a>
+		<div id ="question" oncopy="return false" oncut="return false" onpaste="return false" onselect="return false">
+			{% if image %}
+				<div id='image'>
+				</div>
+				{{no}}. {{q|safe}}
+			{% else %}
+				{{no}}. {{Ques|safe}}
+			{% endif %}
+			<div id ='option'>
+			<form method="POST" action="/next/">
+				{% csrf_token %}
+				<input type='hidden' name='no' value={{no}} />
+				<input type="radio" name="ans" value="1"{{val1}}/> {{opt1}}</br>
+				<input type="radio" name="ans" value="2"{{val2}}/> {{opt2}}</br>
+				<input type="radio" name="ans" value="3"{{val3}}/> {{opt3}}</br>
+				<input type="radio" name="ans" value="4" {{val4}}/> {{opt4}}</br>
+				{% if Prev %}<a class="prev" href="/question/{{Prev}}/">Prev</a>{% endif %}
+				<input Type="Submit" value='Next'/>
+			</form>
+			</div>
+		</div>
+		<style type="text/css">
+		#content
+		{
+			font-size: 25px;
+			color: red;
+			background: -webkit-linear-gradient(-45deg, #cedbe9 0%,#419ad6 34%,#419ad6 34%,#aac5de 54%,#aac5de 56%,#aac5de 58%,#4bb8f0 70%,#4bb8f0 70%,#3a8bc2 94%,#3a8bc2 94%,#26558b 99%,#26558b 99%);
+			height: 100%;
+			
+		}
+		.prev
+		{
+			background-color: #0FF513;
+			font-size: 20px;
+			border-color: #00FF04;
+			border-width: 1px;
+			border: medium;
+			margin-top: 12px;
+			text-decoration: none;
+			padding-top: 5px;
+			padding-bottom: 8px;
+			padding-left: 10px;
+			padding-right: 10px;
+			color:black;
+			font-weight:500;
+		}
+		.prev:HOVER
+		{
+			color: white;
+		}
+		#question
+		{
+			padding-left: 100px;
+			margin-top: 80px;
+			color: black;
+		}
+		#image
+		{
+			background-image:url("{% static urli %}");
+			width: 400px;
+			height: 200px;
+			background-size: 15ex;
+			background-repeat: no-repeat;
+		}
+		#barr
+		{
+			overflow: scroll;
+			height: 300px;
+			width: 200px;
+			margin-top:15%;
+			float: right;
+			border-left: 0px;
+			border-right:20px;
+			padding:5px;
+			text-align: left;
+			margin-right:50px;
+			border: 5px groove red; 
+		}
+		#barr a
+		{
+			text-decoration: none;
+			color: red;
+			border:1px groove green;
+			display: block;
+			background-color: #8BFCA5;
+			margin-bottom: 1px;
+			border-radius: 3px;
+			padding-right: 2px;
+			font-size: 35px;
+		}
+		#barr a:hover
+		{
+			background-color: white;
+			border-radius: 10px;
+		}
+		p
+		{
+			padding: -40px;
+			color: black;
+		}
+		#user
+		{
+			font-size: 25px;
+			text-align:right;
+			margin-right:40px;
+			color: #4B69DE;
+		}
+		.submit
+		{
+			text-decoration: none;
+			background-origin: padding-box;
+			display:block;
+			border-style:solid;
+			border-color: #1a90ff;
+			text-transform: uppercase;
+			text-align: center;
+			border-radius: 16px;
+			font-size: 30px;
+			margin-top: 2%;
+			width: 150px;
+			padding-bottom: 10px;
+			background-color: #009efa;
+			color: black;
+			float: right;
+			margin-right:-17%; 
+		}
+		.submit:HOVER 
+		{
+			background-color:#1a5eff;
+			color: white;	
+		}
+		#content input[type="submit"]
+		{
+			width:5%;
+			height:5%;
+			background-color: #0FF513;
+			font-size: 20px;
+			border-color: #00FF04;
+			border-width: 1px;
+			border: medium;
+			margin-top: 10px;
+			margin-left: 30px;
+		}
+		#content input[type="submit"]:HOVER 
+		{
+			color: white;
+		}
+		#status
+		{
+			height:15px;
+		 	color: red;
+		 	font-size: 40px;
+		 	position:absolute;
+		    margin-top: 11%;
+		   	margin-left: 85%;
+		    width: 130px;
+		 	background-origin: padding-box;
+			display:block;
+			border-style:solid;
+			border-color: #1a90ff;
+			text-align: center;
+			padding-bottom: 30px;
+		}
+	</style>
+	{% endblock %}
+</html>

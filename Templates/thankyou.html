@@ -1,0 +1,23 @@
+<html>
+{% extends 'base.html' %}
+	{% load staticfiles %}
+	{% block title %}
+		Thank You
+	{% endblock %}
+	{% block content %}
+		<style type="text/css">
+		#content
+		{
+			background-image:url("{% static "thanks.jpg" %}");
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+	<script type="text/javascript">
+	window.addEventListener('load',function(){setTimeout(function() {window.close();}, 5000);});
+	</script>
+	{% endblock %}
+	
+</html>

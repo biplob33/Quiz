@@ -1,0 +1,45 @@
+<html lang="en"> 
+
+	{% load staticfiles %}
+	<link rel="icon" href="{%  static 'addovedi_logo.png' %}">
+	<script src="{% static 'jquery.min.js' %}"></script>
+	<head>
+	<meta charset='UTF-8'/>
+	{% block script %} {% endblock %}
+	<title>{% block title %}{% endblock %}</title>
+	
+	</head>
+	<div id ="body">
+		<body oncontextmenu="return false">
+			<div id ="content">
+				{% block content %}	
+				{% endblock %}
+			</div>
+			<div id ='submit'>
+			{% block submit %}	
+				{% endblock %}
+			</div>
+		</body>
+	</div>
+	<style>
+	body
+		{
+			display: none;
+		}
+		#body
+		{
+			background-origin: padding-box;
+			display:block;
+			border-style:solid;
+			border-color: red;
+			height: 100%; 
+		}
+		#content
+		{
+			font-size: 35px;
+		}
+	</style>
+	<script>
+	$('body').fadeIn(1500);
+	</script>
+</html>

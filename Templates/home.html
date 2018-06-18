@@ -1,0 +1,68 @@
+<html>
+{% extends 'base.html' %}
+	{% load staticfiles %}
+	{% block title %}
+		Home page
+	{% endblock %}
+	{% block content %}
+
+		<style type="text/css">
+		#content
+		{
+			background-image:url("{% static "back.png" %}");
+			background-repeat: no-repeat;
+			width: 100%;
+			/*margin-top:-30%;*/
+			height: 100%;
+			background-size: 100% 100%;
+			height: 100%;
+		}
+		 #content .submit
+		{
+			text-decoration: none;
+			background-origin: padding-box;
+			display:block;
+			border-style:solid;
+			border-color: green;
+			text-transform: uppercase;
+			text-align: center;
+			padding-top: 300px;
+		}
+		.submit:HOVER 
+		{
+			background-color: green;
+			color: white;
+		}
+	</style>
+	{% endblock %}
+	{% block submit %}
+	<a class="submit" href="/login/">Enter</a>
+	<style type="text/css">
+		.submit
+		{
+			text-decoration: none;
+			background-origin: padding-box;
+			display:block;
+			border-style:solid;
+			border-color: #1a90ff;
+			text-transform: uppercase;
+			text-align: center;
+			border-radius: 16px;
+			font-size: 30px;
+			margin-top: -10%;
+			margin-left:45%;
+			width: 150px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			background-color: #009efa;
+			color: black;
+		}
+		.submit:HOVER 
+		{
+			background-color:#1a5eff;
+			color: white;
+		}
+	</style>
+	
+	{% endblock %}
+</html>

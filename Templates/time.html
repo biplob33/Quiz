@@ -1,0 +1,38 @@
+<html>
+<head>
+<script type="text/javascript">
+function countDown(time,elem)
+{
+	var mins=0;
+	var hour=0;
+	if(time>60){
+		mins=Math.floor( time/60);
+		secs=time%60;
+	}
+	else{
+		secs=time;
+	}
+	if(mins>60){
+		hour=Math.floor(mins/60);
+		mins=mins%60;
+	}
+	var element = document.getElementById(elem);
+	element.innerHTML=hour+":"+mins+":"+secs;
+	element.innerHTML+="time="+time;
+	if(secs < 1&&mins<1&&hour<1) {
+		clearTimeout(timer);
+		 window.location="/submit/";
+	}
+	time--;
+	var timer = setTimeout('countDown('+time+',"'+elem+'")',1000);
+}
+</script>
+<div id ='status'>
+
+</div>
+<script type="text/javascript">
+countDown(600,'status');
+</script>
+</head>
+<iframe src='/time/'width="100%" height="100%"></iframe>
+</html>

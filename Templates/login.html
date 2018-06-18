@@ -1,0 +1,82 @@
+<html>
+{% extends 'base.html' %}
+{% block title %}
+		Login To Your Account
+	{% endblock %}
+	{% block content %}
+		<style type="text/css">
+		#content
+		{
+			color: red;
+			background: -webkit-linear-gradient(-45deg, #cedbe9 10%,#419ad6 40%,#419ad6 40%,#aac5de 54%,#aac5de 56%,#aac5de 58%,#4bb8f0 70%,#4bb8f0 70%,#3a8bc2 94%,#3a8bc2 94%,#26558b 99%,#26558b 99%);
+			height: 100%;
+		}
+	</style>
+	{% endblock %}
+	{% block submit %}
+		<form action="/auth/" method="POST">
+			{% csrf_token %}
+			<div id ='content1'>
+				<p><label for="Name">User Name:</label>
+				<input type="text" name="Name" value="" id="Name" placeholder="Enter Your UserName" required></p>
+				<p>Password:<input type="password" name="password" value="" id="password" placeholder="Password here" required></p>
+				<p><input type="Submit" value="Log In"></p>
+			</div>
+		</form>
+		<style type="text/css">
+		form
+		{
+			background-origin:padding-box;
+			border-style:solid;
+			display:block;
+			border-color: orange;
+			width: 550px;
+			height: 300px;
+			margin-left: 30%;
+			margin-top: -35%;
+		}
+		#content1
+		{
+			padding-top: 10px;
+			color: white;
+			margin-left: 50px;
+			font-size: 40px;
+		}
+		#content1 input[type="text"]
+		{
+			width: 250px;
+			height: 35px;
+			font-size:20px;
+			font-family:cursive;
+			font-weight:150;
+			padding-bottom: -55px;
+		}
+		#content1 input[type="text"]:HOVER
+		{
+			border-style:groove;
+			border-top-color:#97A2A6 ;
+		}
+		#content1 input[type="password"]
+		{
+			width: 250px;
+			height: 35px;
+			margin-left: 35px;
+			font-size:20px;
+			font-family:cursive;
+			font-weight:150;
+
+		}
+		#content1 input[type="password"]:HOVER
+		{
+			border-style:groove;
+			border-top-color: #97A2A6;
+		}
+		#content1 input[type="submit"]
+		{
+			width:15%;
+			height:10%;
+			margin-left: 39%;
+		}
+		</style>
+	{% endblock %}
+</html>

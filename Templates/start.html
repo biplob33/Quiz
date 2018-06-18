@@ -1,0 +1,69 @@
+<html>
+{% extends 'base.html' %}
+	{% block title %}
+		Start page
+	{% endblock %}
+	{% block content %}
+		Hello {{user}},
+		<div id ="Directions">
+			<h1>Directions For This Event</h1>
+			<ul>
+				<li>All questions are compulsory.</li>
+				<li>Total time is Limited upto 60 mins</li>
+				<li>You are not  allowed to open any other tab except this.</li>
+				<li>Candidate must sign on the attendance sheet.</li>
+				<li>For Right answer 4 marks will be awarded and -1 for Wrong answer.</li>
+				<li>Any and all disputes, claims and causes of action arising out of or connected with this Event, the organiser nor Addovedi team will be held responsible for it. Decision of organiser will be considered final in this case.</li>
+			</ul>
+		</div>
+		<a class="start"  onclick="window.open('/update_time/', 'newwindow', 'width=2000px, height=1000px'); window.location='/login/';return false;">Start</a>
+		<style type="text/css">
+		#content
+		{
+			color: blue;
+			background: -webkit-linear-gradient(-45deg, #cedbe9 0%,#419ad6 34%,#419ad6 34%,#aac5de 54%,#aac5de 56%,#aac5de 58%,#4bb8f0 70%,#4bb8f0 70%,#3a8bc2 94%,#3a8bc2 94%,#26558b 99%,#26558b 99%);
+			height:100%;
+			
+		}
+		#Directions
+		{
+			background-origin:padding-box;
+			border-style:solid;
+			padding-left: 40px;
+			color: blue;
+			font-size: 20px;
+			margin-top: 10px;
+		}
+		#Directions h1
+		{
+			padding-left:20px;
+			
+		}
+		.start
+		{
+			text-decoration: none;
+			background-origin: padding-box;
+			display:block;
+			border-style:solid;
+			border-color: #1a90ff;
+			text-transform: uppercase;
+			text-align: center;
+			border-radius: 16px;
+			font-size: 30px;
+			margin-top: 4%;
+			margin-left:45%;
+			width: 150px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			background-color: #009efa;
+			color: black;
+		}
+		.start:HOVER 
+		{
+			background-color:#1a5eff;
+			color: white;	
+			cursor: pointer;
+		}
+	</style>
+	{% endblock %}	
+</html>
